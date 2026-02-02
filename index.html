@@ -189,30 +189,48 @@
  function moveButton(e) {
             moveCount++;
             
-            // Randomly update text first (important because text affects button width)
             const phrases = ["Nice try! ✈️", "Miles can't stop us!", "Still No? 🥺", "Just click YES!", "I'm faster than Wi-Fi!"];
             if (moveCount % 4 === 0) noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
 
-            // Essential: Use fixed positioning for the move
-            noBtn.style.position = 'fixed';
-            noBtn.style.margin = '0';
-            
-            // Calculate constraints based on CURRENT button size and window size
             const btnRect = noBtn.getBoundingClientRect();
-            const padding = 24; // Keep it slightly away from the edges
+            const padding = 20;
             
-            const maxX = window.innerWidth - btnRect.width - padding;
-            const maxY = window.innerHeight - btnRect.height - padding;
+            // Viewport dimensions (always up-to-date even if browser is resized)
+            const viewWidth = window.innerWidth;
+            const viewHeight = window.innerHeight;
             
-            // Generate valid random coordinates
-            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            const mouseX = e.clientX || (e.touches && e.touches[0].clientX);
+            const mouseY = e.clientY || (e.touches && e.touches[0].clientY);
             
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
             
-            // Make YES grow
-            yesScale += 0.2;
+            let deltaX = btnCenterX - mouseX;
+            let deltaY = btnCenterY - mouseY;
+            
+            if (deltaX === 0 && deltaY === 0) {
+                deltaX = Math.random() - 0.5;
+                deltaY = Math.random() - 0.5;
+            }
+            
+            const distance = 140; 
+            const angle = Math.atan2(deltaY, deltaX);
+            
+            // Calculate proposed new position
+            let newX = btnRect.left + Math.cos(angle) * distance;
+            let newY = btnRect.top + Math.sin(angle) * distance;
+            
+            // CLAMP TO VIEWPORT: Ensure it stays within current browser window width/height
+            const maxX = viewWidth - btnRect.width - padding;
+            const maxY = viewHeight - btnRect.height - padding;
+            
+            newX = Math.min(Math.max(padding, newX), maxX);
+            newY = Math.min(Math.max(padding, newY), maxY);
+            
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+            
+            yesScale += 0.12;
             yesBtn.style.transform = `scale(${yesScale})`;
         }
 
@@ -268,6 +286,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -37,15 +37,11 @@
             display: none;
             opacity: 0;
         }
-        
         #no-btn {
-                position: relative;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 50;
-                transition: all 0.2s ease;
-        /*   transition: all 0.15s ease;
-        */
+            position: fixed; 
         }
-        
         #yes-btn {
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -78,16 +74,18 @@
     <!-- PAGE 1: THE INVITATION -->
     <div id="invite-card" class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl text-center max-w-md w-full relative z-10 fade-in">
         <div class="text-6xl mb-6 floating">💝</div>
-        <h1 class="cursive text-4xl md:text-5xl text-rose-500 mb-4">Will you spend Valentines with me?</h1>
-        <p class="text-gray-600 mb-8 italic">I've planned a virtual night for us...</p>
+        <h1 class="cursive text-4xl md:text-5xl text-rose-500 mb-4">Will you be my Valentine?</h1>
+        <p class="text-gray-600 mb-8 italic">Miles apart, but always in my heart. I've planned a virtual night for us...</p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center min-h-[120px]">
             <button id="yes-btn" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-10 rounded-full shadow-lg transform active:scale-95 text-xl z-20">
                 Yes!
             </button>
-            <button id="no-btn" class="bg-gray-200 text-gray-500 font-bold py-2 px-6 rounded-full whitespace-nowrap">
-                No
-            </button>
+            <div class="w-24 h-12 flex items-center justify-center">
+                <button id="no-btn" class="bg-gray-200 text-gray-500 font-bold py-2 px-6 rounded-full whitespace-nowrap">
+                    No
+                </button>
+            </div>
         </div>
     </div>
 
@@ -102,72 +100,73 @@
     <div id="itinerary-card" class="hidden-card bg-white p-6 md:p-10 rounded-3xl shadow-2xl max-w-2xl w-full relative z-10 my-8">
         <div class="text-center mb-10">
             <span class="text-rose-500 text-sm font-bold uppercase tracking-widest">February 14th, 2026</span>
-            <h2 class="cursive text-5xl text-rose-600 mt-2">Plan of Events</h2>
+            <h2 class="cursive text-5xl text-rose-600 mt-2">Schedule of the Evening</h2>
             <div class="h-1 w-24 bg-rose-200 mx-auto mt-4 rounded-full"></div>
             <p class="text-gray-400 text-sm mt-3 italic">Connecting across the distance~</p>
         </div>
 
         <div class="space-y-8">
-            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.2s">
                 <div class="bg-rose-100 p-3 rounded-2xl text-2xl">🍕</div>
                 <div>
-                    <h3 class="font-bold text-rose-700 text-lg"> 8:00 PM — Get Dinner (or Breakfast if you haven't eaten yet)</h3>
+                    <h3 class="font-bold text-rose-700 text-lg"> 8:00 PM PST/5:00 PM HST — Get Dinner(or Breakfast!)</h3>
                     <p class="text-gray-600">We both order our favorite food or we can order surprise food for each other via Uber Eats!</p>
                 </div>
             </div>
 
-            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.5s">
+            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.4s">
                 <div class="bg-rose-100 p-3 rounded-2xl text-2xl">💻</div>
                 <div>
-                    <h3 class="font-bold text-rose-700 text-lg">9:00 PM — Candlelit Facetime</h3>
-                    <p class="text-gray-600">Dress up in night wear, light a candle, and enjoy our dinner together over video call. It's almost like being there!</p>
+                    <h3 class="font-bold text-rose-700 text-lg"> 9:00 PM PST/6:00 PM HST — Candlelit Facetime</h3>
+                    <p class="text-gray-600"> Dress up in night wear, light a candle, and enjoy dinner together over video call. It's almost like being there!</p>
                 </div>
             </div>
 
-            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.7s">
+            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.6s">
                 <div class="bg-rose-100 p-3 rounded-2xl text-2xl">🎬</div>
                 <div>
-                    <h3 class="font-bold text-rose-700 text-lg">10:00 PM — Show Time!</h3>
+                    <h3 class="font-bold text-rose-700 text-lg"> 10:00 PM PST/7:00 PM HST — Show Time!</h3>
                     <p class="text-gray-600"> Binge Studio Ghibli Films in bed or another show together. It's time we rewatched them!</p>
                 </div>
             </div>
 
-            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.9s">
+            <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.8s">
                 <div class="bg-rose-100 p-3 rounded-2xl text-2xl">📜</div>
                 <div>
-                    <h3 class="font-bold text-rose-700 text-lg">12:00 AM — The Finale</h3>
+                    <h3 class="font-bold text-rose-700 text-lg"> 1:00 AM PST/10:00 PM HST Finale</h3>
                     <p class="text-gray-600"> The day will end and we'll say good bye!</p>
                 </div>
             </div>
         </div>
 
-
         <!-- SUGGESTIONS SECTION -->
         <div class="mt-12 pt-8 border-t border-rose-100">
-            <h3 class="cursive text-2xl text-rose-600 mb-4">Any special requests?</h3>
+            <!-- Aligned this text to center -->
+            <h3 class="cursive text-2xl text-rose-600 mb-4 text-center">Any special requests?</h3>
             <div class="relative">
                 <textarea id="suggestion-box" placeholder="Write something you'd like to change to our night..." class="w-full p-4 rounded-2xl border-2 border-rose-100 focus:border-rose-300 focus:outline-none text-gray-600 transition h-24 bg-rose-50/30"></textarea>
-                <button id="send-suggestion" class="mt-3 bg-rose-400 hover:bg-rose-500 text-white font-bold py-2 px-6 rounded-full text-sm transition transform active:scale-95">
-                    Save Request
-                </button>
+                <!-- Centered the button using Flexbox -->
+                <div class="flex justify-center mt-3">
+                    <button id="send-suggestion" class="bg-rose-400 hover:bg-rose-500 text-white font-bold py-2 px-10 rounded-full text-sm transition transform active:scale-95">
+                        Save Request
+                    </button>
+                </div>
             </div>
-             <p id="error-msg" class="hidden text-rose-600 text-sm mt-3 font-semibold bg-rose-50 p-3 rounded-xl border border-rose-200">
-                ⚠️ This feature doesn't work yet so you'll have to let me know lol
+            <p id="error-msg" class="hidden text-rose-600 text-sm mt-3 font-semibold bg-rose-50 p-3 rounded-xl border border-rose-200 text-center">
+                ⚠️ This feature doesn't work yet so you'll have to let me know!
             </p>
-            <p id="thank-you-msg" class="hidden text-rose-500 text-sm mt-3 animate-bounce">Saved! Hopefully, but let me know in case it doesn't work. </p>
         </div>
 
-
-        <div class="mt-12 text-center">
-            <p class="cursive text-2xl text-rose-500 mb-4 italic"></p>
-            <div class="flex flex-col items-center gap-4">
-                <button onclick="window.print()" class="text-xs text-gray-400 hover:text-rose-400 transition underline">Save Our Plan</button>
-            </div>
+        <!-- DISCLAIMER SECTION -->
+        <div class="mt-10 p-4 bg-gray-50 rounded-2xl border border-gray-100 text-center fade-in" style="animation-delay: 1s">
+            <p class="text-[10px] text-gray-400 leading-relaxed uppercase tracking-widest">
+                Disclaimer: This is a playful invite and you can say no! No data is collected through button clicks or inputs from this form. Itinerary subject to change based on nap schedules, Wi-Fi stability, and levels of cuteness. 
+                Participation in Valentine's Day activities may result in extreme happiness.
+            </p>
         </div>
     </div>
 
-    <script type="module">
-        // Elements
+    <script>
         const noBtn = document.getElementById('no-btn');
         const yesBtn = document.getElementById('yes-btn');
         const inviteCard = document.getElementById('invite-card');
@@ -175,64 +174,49 @@
         const itineraryCard = document.getElementById('itinerary-card');
         const suggestionBox = document.getElementById('suggestion-box');
         const sendBtn = document.getElementById('send-suggestion');
-        const thankYou = document.getElementById('thank-you-msg');
-        const adminTrigger = document.getElementById('admin-trigger');
-        const adminPanel = document.getElementById('admin-panel');
-        const suggestionList = document.getElementById('suggestion-list');
+        const errorMsg = document.getElementById('error-msg');
 
         let moveCount = 0;
         let yesScale = 1;
 
-        // Auth
-        async function startAuth() {
-            try { await signInAnonymously(auth); } catch (e) { console.error("Auth failed", e); }
-        }
-        startAuth();
-
- function moveButton(e) {
+        function moveButton() {
             moveCount++;
-            
-            // Randomly update text first (important because text affects button width)
-            const phrases = ["Nice try! ✈️", "Miles can't stop us!", "Still No? 🥺", "Just click YES!", "I'm faster than Wi-Fi!"];
-            if (moveCount % 4 === 0) noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
 
-            // Essential: Use fixed positioning for the move
-            noBtn.style.position = 'fixed';
-            noBtn.style.margin = '0';
+            const phrases = ["Nice try! ✈️", "Miles can't stop us!", "Still No? 🥺", "Just click YES!", "I'm faster than Wi-Fi!"];
+            if (moveCount % 2 === 0) {
+                noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            }
+
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+
+            const padding = 75; 
             
-            // Calculate constraints based on CURRENT button size and window size
-            const btnRect = noBtn.getBoundingClientRect();
-            const padding = 24; // Keep it slightly away from the edges
-            
-            const maxX = window.innerWidth - btnRect.width - padding;
-            const maxY = window.innerHeight - btnRect.height - padding;
-            
-            // Generate valid random coordinates
-            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            const randomX = Math.floor(Math.random() * (viewportWidth - btnWidth - padding * 2)) + padding;
+            const randomY = Math.floor(Math.random() * (viewportHeight - btnHeight - padding * 2)) + padding;
             
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
             
-            // Make YES grow
-            yesScale += 0.2;
+            yesScale += 0.15;
             yesBtn.style.transform = `scale(${yesScale})`;
         }
 
-
         noBtn.addEventListener('mouseover', moveButton);
-        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
-        noBtn.addEventListener('click', (e) => { e.preventDefault(); moveButton(); });
+        noBtn.addEventListener('touchstart', (e) => { 
+            e.preventDefault(); 
+            moveButton(); 
+        });
 
         yesBtn.addEventListener('click', () => {
             noBtn.style.display = 'none';
             inviteCard.style.opacity = '0';
-            
             setTimeout(() => {
                 inviteCard.style.display = 'none';
                 memeOverlay.classList.add('meme-active');
                 createHearts();
-                
                 setTimeout(() => {
                     memeOverlay.classList.remove('meme-active');
                     setTimeout(() => {
@@ -246,16 +230,13 @@
                 }, 3000);
             }, 300);
         });
-        
+
         sendBtn.addEventListener('click', () => {
-            // Show the custom error message instead of processing Firestore logic
             errorMsg.classList.remove('hidden');
-            
-            // Optional: briefly pulse the message to grab attention
             errorMsg.classList.add('animate-pulse');
             setTimeout(() => errorMsg.classList.remove('animate-pulse'), 2000);
         });
-        
+
         function createHearts() {
             for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
@@ -280,17 +261,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
